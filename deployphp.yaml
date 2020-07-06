@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-env
+spec:
+  selector:
+    matchLabels:
+      env: Production
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        env: Production
+    spec:
+      containers:
+      - name:  php-prod
+        image: vimal13/apache-webserver-php
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: mypvc1
+            mountPath: /var/www/html   
+      volumes:
+      - name: web
+        persistentVolumeClaim:
+          claimName: mypvc1
