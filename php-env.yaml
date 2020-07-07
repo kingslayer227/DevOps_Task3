@@ -18,9 +18,9 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-          - name: mypvc1
+          - name: pvc1
             mountPath: /var/www/html   
       volumes:
-      - name: web
+      - name: pvc1
         persistentVolumeClaim:
-          claimName: mypvc1
+          claimName: pvc1
